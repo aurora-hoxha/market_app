@@ -1,6 +1,6 @@
 Kam hedhur databazen dhe file-t static-e (imazhet) ne git, per lehtesine tuaj. 
 
-1. Install dependencies  
+1. Install dependencies and create venev.
    pip install -r requirements.txt 
 
 2. Do migrations
