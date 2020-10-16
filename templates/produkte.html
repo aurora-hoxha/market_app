@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+
+    <div class="last-products">
+
+
+        <h2>{{ kategori.emri }}</h2>
+
+        <div class="row">
+            {% for produkt in produkte %}
+                <div class="col-lg-3 col-sm-6 ">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="/{{ produkt.image }}" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ produkt.name }}</a>
+                            </h4>
+                            <p class="card-text"><b>Cmimi:</b> {{ produkt.price }}</p>
+                            <p class="card-text"><b>Sasia:</b> {{ produkt.sasia }}</p>
+
+{#                            <a href="{% url 'item_increment' produkt.id %}" ><i class="fa fa-chevron-up"></i></a><br>#}
+{#                            <a href="{% url 'item_decrement' produkt.id %}"><i class="fa fa-chevron-down"></i></a>#}
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'cart_add' produkt.id %}" style="color: #02ae00">Shto në shportë</a> <br>
+                            <a href="{% url 'cart_clear' %}" style="color: #91001d">Hiq nga shporta</a><br>
+
+
+                            {#                            <a href="" class="btn btn-primary">Shto në shportë</a>#}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+

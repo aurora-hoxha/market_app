@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+
+    <div class="text-center">
+
+        <div class="form-signin">
+            <form method="POST">
+                <img class="mb-4" src="https://icon-library.com/images/icon-login/icon-login-10.jpg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <p class="mt-5 mb-3 text-muted"> Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!</p>
+            </form>
+
+        </div>
+
+
+    </div>
+{% endblock %}

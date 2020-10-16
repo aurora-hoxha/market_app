@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <div class="container">
+
+
+        <h1 class="my-4">Mirëseerdhët në MyMarket.al</h1>
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            {% for dyqan in dyqanet %}
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a href="{% url 'kategori' dyqan.id %}"><img class="card-img-top" src="{{ dyqan.logo }}" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{% url 'kategori' dyqan.id %}">{{ dyqan.emri }}</a>
+                            </h4>
+                            <p class="card-text"><b>Adresa:</b> {{ dyqan.adresa }}</p>
+                            <p class="card-text"><b>Telefon:</b> {{ dyqan.tel }}</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="{% url 'kategori' dyqan.id %}" class="btn btn-primary">Futu në dyqan!</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+
+{% endblock %}

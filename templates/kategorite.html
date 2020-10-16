@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <div class="container">
+
+        <h2>Kategoritë</h2>
+
+        <div class="row">
+            {% for kategori in kategorite %}
+                <div class="col-lg-3 col-sm-6 ">
+                    <div class="card h-100">
+                        <a href="{% url 'produktet' dyqan_id kategori.id %}">
+                            <img class="card-img-top" src="/{{ kategori.logo }}" alt=""></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="last-products" style="padding-top: 2%">
+
+        <!-- Portfolio Section -->
+        <h2>Produktet me te reja</h2>
+
+
+        <div class="row">
+            {% for produkt in produkte %}
+                <div class="col-lg-3 col-sm-6 ">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="/{{ produkt.image }}" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ produkt.name }}</a>
+                            </h4>
+                            <p class="card-text"><b>Cmimi:</b> {{ produkt.price }}</p>
+                            <p class="card-text"><b>Sasia:</b> {{ produkt.sasia }}</p>
+                        </div>
+                        <div class="card-footer">
+                            {#                            <a href="" class="btn btn-primary">Shto në shportë</a>#}
+                            <a href="{% url 'cart_add' produkt.id %}" style="color: #02ae00">Shto në shportë</a>
+                            <br>
+                            <a href="{% url 'cart_clear' %}" style="color: #91001d">Hiq nga shporta</a><br>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% load cart_tag %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="/">MyMarket.al</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+            aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Kryefaqe <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Kategoritë</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown09">
+                    {% for kategori in kategorite %}
+                        <a class="dropdown-item" href="#"> {{ kategori.emri }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url  'logout' %}">Dil</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url  'login' %}">Identifikohu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url  'register' %}">Regjistrou</a>
+                </li>
+            {% endif %}
+
+
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+            <a href="{% url 'cart_detail' %}">
+
+                <button type="button" class="btn">
+                    <i class="fa fa-cart-plus"></i>
+                    <span class="badge badge-pill badge-primary">{{ request.session.cart|length }}</span> | Shporta
+                </button>
+            </a>
+
+
+            {#            <input class="form-control" type="text" placeholder="Search" aria-label="Search">#}
+        </form>
+    </div>
+</nav>
